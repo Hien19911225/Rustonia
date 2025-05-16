@@ -1,86 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ヴェルトニア共和国 | 公式サイト</title>
+  <meta charset="UTF-8">
+  <title>ヴェルトニア人民共和国</title>
   <style>
     body {
-      background-color: #000;
-      color: #0f0;
-      font-family: 'Courier New', monospace;
-      padding: 2rem;
+      background-color: #111;
+      color: #eee;
+      font-family: "Courier New", monospace;
+      padding: 2em;
     }
-
-    h1 {
-      font-size: 2.5rem;
-      text-align: center;
-      color: #f00;
-      text-shadow: 0 0 10px #f00;
-    }
-
-    .flag {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .flag img {
+    img.flag {
       max-width: 300px;
-      filter: grayscale(1) contrast(2);
+      border: 3px solid #0f0;
+      display: block;
+      margin-bottom: 1em;
     }
-
-    nav {
-      text-align: center;
-      margin-bottom: 2rem;
+    h1 {
+      color: #0f0;
     }
-
-    nav a {
-      margin: 0 1rem;
+    section {
+      margin-top: 2em;
+      padding: 1em;
+      border: 1px dashed #0f0;
+      background-color: #1a1a1a;
+    }
+    a {
       color: #0ff;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .slogan {
-      font-style: italic;
-      color: #888;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.8rem;
-      color: #555;
     }
   </style>
 </head>
 <body>
-  <div class="flag">
-    <!-- 架空の国旗を後で差し替え可能 -->
-    <img src="https://imgur.com/a/F8PDmDP" alt="国旗">
-  </div>
 
-  <h1>ヴェルトニア共和国</h1>
-  <p class="slogan">「秩序と真実の名のもとに」</p>
+  <h1>ヴェルトニア人民共和国</h1>
 
-  <nav>
-    <a href="#">国家情報</a>
-    <a href="#">法律と規約</a>
-    <a href="#">市民ポータル</a>
-    <a href="#">外交連絡</a>
-  </nav>
+  <!-- 国旗表示 -->
+  <img src="https://i.imgur.com/nGohWgw.png" alt="ヴェルトニア国旗" class="flag">
 
-  <p>ヴェルトニア共和国は、精神の統一を第一とする独立国家である。</p>
-  <p>我々の栄光は、歴史と記憶の中に刻まれている。</p>
+  <!-- ニュース -->
+  <section class="news">
+    <h2>最新ニュース</h2>
+    <ul>
+      <li><strong>[2025/05/16]</strong> 情報省、国民監視システム「EYE-07」の運用開始を発表。</li>
+      <li><strong>[2025/05/12]</strong> 国家主席、南地下自治区への視察を実施。</li>
+      <li><strong>[2025/05/01]</strong> 建国記念式典、首都ヴェルトノグラードにて挙行。</li>
+    </ul>
+  </section>
 
-  <footer>
-    &copy; 2025 ヴェルトニア共和国 政府機構 - All Rights Reserved
-  </footer>
+  <!-- Discordリンク -->
+  <section class="discord">
+    <h2>地下通信網（Discord）</h2>
+    <p>国家承認済：ヴェルトニア市民のための通信チャネル</p>
+    <a href="https://discord.gg/mTZqPWqexN" target="_blank">ディスコードサーバーに参加する</a>
+  </section>
+
 </body>
 </html>
