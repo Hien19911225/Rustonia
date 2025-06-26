@@ -1,114 +1,95 @@
-from http.server import HTTPServer, BaseHTTPRequestHandler
-
-html_content = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ヴェルトニア</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #000;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #eee;
-        }
-        nav a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-        nav a:last-child {
-            margin-right: 0;
-        }
-        .flag {
-            height: 25px; /* 小さくしました */
-        }
-        .discord-btn {
-            background-color: #7289DA;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        main {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        .news-section h2 {
-            margin-bottom: 15px;
-        }
-        .news-content p {
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>ヴェルトニア</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: "Courier New", monospace;
+      padding: 2em;
+    }
+
+    h1 {
+      color: #0f0;
+      font-size: 2em;
+      border-bottom: 2px solid #0f0;
+      padding-bottom: 0.2em;
+      margin-bottom: 1em;
+    }
+
+    img.flag {
+      max-width: 300px;
+      border: 3px solid #0f0;
+      display: block;
+      margin-bottom: 2em;
+    }
+
+    section {
+      margin-top: 2em;
+      padding: 1em;
+      border: 1px dashed #0f0;
+      background-color: #1a1a1a;
+    }
+
+    .news ul {
+      list-style-type: square;
+      padding-left: 1.5em;
+    }
+
+    .news li {
+      margin-bottom: 0.5em;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    .entry a {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 0.8em 1.2em;
+      background-color: #0f0;
+      color: #000;
+      font-weight: bold;
+      border: 2px solid #0f0;
+      border-radius: 5px;
+      font-family: 'Courier New', monospace;
+      transition: 0.2s ease;
+    }
+
+    .entry a:hover {
+      background-color: #000;
+      color: #0f0;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <a href="#">ホーム</a>
-        <a href="#">ニュース</a>
-        <a href="#">プロフィール</a>
-    </nav>
-    <img class="flag" src="https://i.imgur.com/96SdfeC.png" alt="国旗" />
-    <a class="discord-btn" href="https://discord.gg/WgR245Btrq" target="_blank" rel="noopener noreferrer">Join Discord</a>
-</header>
+  <h1>ヴェルトニア</h1>
 
-<main>
-    <h1>ホームページタイトル</h1>
+  <!-- 国旗 -->
+  <img src="https://i.imgur.com/nGohWgw.png" alt="ヴェルトニア国旗" class="flag">
 
-    <section class="nation-description">
-        <h2>国家について</h2>
-        <p>ヴェルトニアとは2025/3/21にできた架空国家です,指導者はヴァシリー・ザイツェフ氏です</p>
-    </section>
+  <!-- ニュース -->
+  <section class="news">
+    <h2>政府発表</h2>
+    <ul>
+      <li><strong>[2025/06/7]</strong> 降伏国と敵対。</li>
+      <li><strong>[2025/05/8]</strong> 交渉が成立し降伏国と和解。(こちらが妥協し)</li>
+      <li><strong>[2025/05/01]</strong> 改革が始まる</li>
+    </ul>
+  </section>
 
-    <section class="news-section">
-        <h2>最新ニュース</h2>
-        <div class="news-content">
-            <p><strong>2025年6月27日:</strong> 降伏国と戦争</p>
-            <p><strong>2025年6月26日:</strong> なんとか和解</p>
-            <p><strong>2025年6月26日:</strong> 各地で改革が始まる</p>
-        </div>
-    </section>
-</main>
+  <!-- 入国ゲート -->
+  <section class="entry">
+    <h2>入国ゲート</h2>
+    <a href="https://discord.gg/WgR245Btrq" target="_blank">
+      ▶ ヴェルトニアに入国する
+    </a>
+  </section>
 
 </body>
 </html>
-'''
-
-class SimpleHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html; charset=utf-8')
-        self.end_headers()
-        self.wfile.write(html_content.encode('utf-8'))
-
-def run(server_class=HTTPServer, handler_class=SimpleHandler, port=8000):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print(f"Serving HTTP on port {port} ...")
-    httpd.serve_forever()
-
-if __name__ == '__main__':
-    run()
