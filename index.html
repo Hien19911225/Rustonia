@@ -1,18 +1,66 @@
-<!DOCTYPE html>
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+html_content = '''<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ヴェルトニア</title>
     <style>
-        /* （省略：前回と同じCSS） */
+        * {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
-            font-family: "Arial Black", Arial, sans-serif;
-            background-color: #8B0000; /* ダークレッド */
-            color: #fff;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
         }
-        /* （省略） */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #eee;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        nav a:last-child {
+            margin-right: 0;
+        }
+        .flag {
+            height: 25px; /* 小さくしました */
+        }
+        .discord-btn {
+            background-color: #7289DA;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        .news-section h2 {
+            margin-bottom: 15px;
+        }
+        .news-content p {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -28,30 +76,39 @@
 </header>
 
 <main>
-    <h1>ヴェルトニア</h1>
-    
+    <h1>ホームページタイトル</h1>
+
     <section class="nation-description">
         <h2>国家について</h2>
-        <p>
-            ヴェルトニアは2025/3/21にヴァシリー・ザイツェフ氏によって建国された国家です  
-            国旗は自由と団結の象徴として掲げています。
-            私たちは共に未来を切り拓き、新たな歴史を築いていきます。
-        </p>
+        <p>ヴェルトニアとは2025/3/21にできた架空国家です,指導者はヴァシリー・ザイツェフ氏です</p>
     </section>
 
-    <section class="news-section" id="news-section">
-        <article class="news-item">
-            <div class="news-title">最新ニュース</div>
-            <div class="news-date">2025年6月7日</div>
-            <div class="news-content">降伏国と敵対し緊張が高まる</div>
-        </article>
-        <article class="news-item">
-            <div class="news-title">和解</div>
-            <div class="news-date">2025年6月26日</div>
-            <div class="news-content">なんとか降伏と和解し平和が来る</div>
-        </article>
+    <section class="news-section">
+        <h2>最新ニュース</h2>
+        <div class="news-content">
+            <p><strong>2025年6月27日:</strong> 降伏国と戦争</p>
+            <p><strong>2025年6月26日:</strong> なんとか和解</p>
+            <p><strong>2025年6月26日:</strong> 各地で改革が始まる</p>
+        </div>
     </section>
 </main>
 
 </body>
 </html>
+'''
+
+class SimpleHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(html_content.encode('utf-8'))
+
+def run(server_class=HTTPServer, handler_class=SimpleHandler, port=8000):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f"Serving HTTP on port {port} ...")
+    httpd.serve_forever()
+
+if __name__ == '__main__':
+    run()
