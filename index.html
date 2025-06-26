@@ -1,95 +1,57 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>ヴェルトニア</title>
-  <style>
-    body {
-      background-color: #111;
-      color: #eee;
-      font-family: "Courier New", monospace;
-      padding: 2em;
-    }
-
-    h1 {
-      color: #0f0;
-      font-size: 2em;
-      border-bottom: 2px solid #0f0;
-      padding-bottom: 0.2em;
-      margin-bottom: 1em;
-    }
-
-    img.flag {
-      max-width: 300px;
-      border: 3px solid #0f0;
-      display: block;
-      margin-bottom: 2em;
-    }
-
-    section {
-      margin-top: 2em;
-      padding: 1em;
-      border: 1px dashed #0f0;
-      background-color: #1a1a1a;
-    }
-
-    .news ul {
-      list-style-type: square;
-      padding-left: 1.5em;
-    }
-
-    .news li {
-      margin-bottom: 0.5em;
-    }
-
-    a {
-      color: #0ff;
-      text-decoration: none;
-    }
-
-    .entry a {
-      display: inline-block;
-      margin-top: 1em;
-      padding: 0.8em 1.2em;
-      background-color: #0f0;
-      color: #000;
-      font-weight: bold;
-      border: 2px solid #0f0;
-      border-radius: 5px;
-      font-family: 'Courier New', monospace;
-      transition: 0.2s ease;
-    }
-
-    .entry a:hover {
-      background-color: #000;
-      color: #0f0;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ヴェルトニア</title>
+    <style>
+        /* （省略：前回と同じCSS） */
+        body {
+            margin: 0;
+            font-family: "Arial Black", Arial, sans-serif;
+            background-color: #8B0000; /* ダークレッド */
+            color: #fff;
+        }
+        /* （省略） */
+    </style>
 </head>
 <body>
 
-  <h1>ヴェルトニア</h1>
+<header>
+    <nav>
+        <a href="#">ホーム</a>
+        <a href="#">ニュース</a>
+        <a href="#">プロフィール</a>
+    </nav>
+    <img class="flag" src="https://i.imgur.com/96SdfeC.png" alt="国旗" />
+    <a class="discord-btn" href="https://discord.gg/WgR245Btrq" target="_blank" rel="noopener noreferrer">Join Discord</a>
+</header>
 
-  <!-- 国旗 -->
-  <img src="https://i.imgur.com/nGohWgw.png" alt="ヴェルトニア国旗" class="flag">
+<main>
+    <h1>ヴェルトニア</h1>
+    
+    <section class="nation-description">
+        <h2>国家について</h2>
+        <p>
+            ヴェルトニアは2025/3/21にヴァシリー・ザイツェフ氏によって建国された国家です  
+            国旗は自由と団結の象徴として掲げています。
+            私たちは共に未来を切り拓き、新たな歴史を築いていきます。
+        </p>
+    </section>
 
-  <!-- ニュース -->
-  <section class="news">
-    <h2>最新ニュース</h2>
-    <ul>
-      <li><strong>[2025/06/20]</strong> Bot開発が開始。</li>
-      <li><strong>[2025/06/07]</strong> 降伏国と和解。</li>
-      <li><strong>[2025/06/06]</strong> 降伏国と対立。</li>
-    </ul>
-  </section>
-
-  <!-- 入国ゲート -->
-  <section class="entry">
-    <h2>入国ゲート</h2>
-    <a href="https://discord.gg/8B67nZEZkG" target="_blank">
-      ▶ ヴェルトニアに入国する
-    </a>
-  </section>
+    <section class="news-section" id="news-section">
+        <article class="news-item">
+            <div class="news-title">最新ニュース</div>
+            <div class="news-date">2025年6月7日</div>
+            <div class="news-content">降伏国と敵対し緊張が高まる</div>
+        </article>
+        <article class="news-item">
+            <div class="news-title">和解</div>
+            <div class="news-date">2025年6月26日</div>
+            <div class="news-content">なんとか降伏と和解し平和が来る</div>
+        </article>
+    </section>
+</main>
 
 </body>
 </html>
